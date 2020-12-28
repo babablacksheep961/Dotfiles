@@ -1,0 +1,28 @@
+add_newline = false
+
+format = "$status$directory$git_branch$git_state$git_status$character"
+
+[character]
+success_symbol = "[»](bold green)"
+vicmd_symbol= "[«](bold blue)"
+error_symbol= "[»](bold red)"
+
+[package]
+disabled = true
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+symbol = ""
+style = "yellow"
+
+[git_state]
+progress_divider = " of "
+
+[git_status]
+untracked=" $count "
+modified=" $count "
+staged=" $count "
+renamed=""
+deleted=" $count "
+style = "bold bright-white"
+format = "$all_status$ahead_behind"
