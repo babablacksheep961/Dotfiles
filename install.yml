@@ -1,0 +1,27 @@
+- defaults:
+    link:
+      relink: true
+      force: true
+      create: true
+      glob: true
+
+- clean: ['~']
+
+- link:
+    ~/.zshrc:
+      force: true
+      path: config/zsh/zshrc
+    ~/.config/alacritty/alacritty.yml: config/alacritty
+    ~/.config/bspwm/bspwmrc: config/bspwm
+    ~/.config/dunst/dunstrc: config/dunst
+    ~/.config/flashfocus/flashfocus.yml: config/flashfocus
+    ~/.config/nvim/init.vim: config/nvim
+    ~/.config/picom/picom.conf: config/picom
+    ~/.config/polybar/: config/polybar/*
+    ~/.config/sxhkd/sxhkdrc: config/sxhkd
+    ~/.config/rofi/: config/rofi/*
+    ~/.config/user-dirs.dirs: config/userdirs
+
+- create:
+  - ~/.cache/wget/history
+  - ~/.cache/zsh/history

@@ -1,0 +1,67 @@
+* {
+  background-color: @transparent;
+  border-color: transparent;
+  text-color: #333;
+  width: 250px;
+  font: "Iosevka Bold 11";
+  primary: #a3c3ff;
+  secondary: #798aac;
+  bg-fade: #202331;
+  bg: #101321;
+  myHigh: bold italic;
+  transparent: #0000;
+  scroll-method: 1;
+}
+
+window {
+  transparency: "fake";
+  location: north;
+  y-offset: 5px;
+}
+
+inputbar {
+  children: [];
+  padding: 0px 5px 0px 0px;
+  background-color: @bg;
+  border-radius: 5px;
+}
+
+prompt {
+  padding: 4px 15px 3px 15px;
+  border: 0 solid 0 solid  3px solid 0 solid;
+  background-color: @primary;
+  border-color: @primary;
+}
+
+entry {
+  padding: 4px 15px 3px 15px;
+}
+
+listview {
+  cycle: true;
+  scrollbar: true;
+  columns: 4;
+  fixed-height: true;
+  dynamic: true;
+  lines: 8;
+  background-color: @bg;
+  margin: 5px 0 0 0;
+  border-radius: 5px;
+}
+
+element {
+  highlight: @myHigh;
+  padding: 5px 15px;
+}
+
+element selected {
+  background-color: @bg-fade;
+}
+
+#scrollbar {
+    width:        4px ;
+    border:       0;
+    handle-color: @primary;
+    handle-width: 8px ;
+    padding:      0;
+}

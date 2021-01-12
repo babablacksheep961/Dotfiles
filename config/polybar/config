@@ -1,0 +1,193 @@
+[colors]
+background = #fff
+background-alt = #444
+foreground = #333
+primary = #a3c3ff
+secondary = #798aac
+alert = #938cfc
+spotify = #50d872
+yt = #f05151
+
+[bar/common]
+height = 25
+offset-y=5
+radius = 6
+wm-restack= bspwm
+enable-ipc = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+module-margin = 1
+line-size = 3
+
+font-0 = Iosevka:weight=bold:size=9;3
+font-1 = FontAwesome:size=12:antialias=true;3
+font-2 = Iosevka:size=22:antialias=true;0
+font-3 = bananaslip plus:size=9;1
+font-4 = FontAwesome:size=8:antialias=true;2
+
+[bar/bspwm]
+inherit=bar/common
+width = 240
+offset-x=10
+modules-center = bspwm
+tray-position = right
+tray-padding = 3
+ 
+[bar/spotify]
+inherit=bar/common
+width = 220
+offset-x=260
+modules-left = spotify
+background = ${colors.spotify}
+
+[bar/yt]
+inherit=bar/common
+width = 220
+offset-x=280
+modules-left = yt
+background = ${colors.yt}
+
+
+[bar/info]
+inherit=bar/common
+offset-x= 100%:-340
+width = 140
+
+modules-left= wlan
+modules-right= netSpeed
+padding= 1
+
+tray-position = right
+tray-padding = 3
+
+[bar/system]
+inherit=bar/common
+offset-x= 100%:-190
+width = 180
+
+modules-right = pulseaudio date
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %name%
+label-focused-background= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %name%
+label-occupied-overline= ${colors.primary}
+label-occupied-foreground= ${colors.foreground}
+label-occupied-padding = 2
+
+label-urgent = %name%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %name%
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 2
+
+[module/wlan]
+type = internal/network
+interface = wlo1
+interval = 3.0
+
+format-connected =  <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-font = 5
+label-connected = %essid:0:15:%
+
+format-disconnected = <label-disconnected>
+format-disconnected-font = 2
+label-disconnected = " "
+
+[module/netSpeed]
+type = internal/network
+interface = wlo1
+interval = 1
+
+label-connected =  %downspeed:0:3:%
+label-disconnected = ""
+
+[module/date]
+type = internal/date
+interval = 5
+
+date-alt = " %Y-%m-%d"
+
+time = %I:%M %p
+date = %a | %d
+time-alt = %H:%M:%S
+
+label = %time% - %date%
+format = <label>
+format-prefix = ""
+format-prefix-font = 2
+format-background = ${colors.primary}
+format-padding = 2
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+format-volume-prefix = " "
+format-volume-prefix-font = 2
+label-volume = %percentage%%
+label-muted =  " Mute"
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging =  <label-charging>
+format-charging-underline = ${colors.primary}
+format-charging-prefix = " "
+format-charging-prefix-foreground = "#aaaa00"
+format-charging-prefix-font = 2
+
+format-full = FULL
+format-full-foreground = "#eeaa00"
+format-full-underline = ${colors.primary}
+format-full-prefix = " "
+format-full-prefix-foreground = "#aaaa00"
+format-full-prefix-font = 2
+
+format-discharging = <label-discharging> format-discharging-underline = ${colors.secondary}
+format-discharging-prefix = " "
+format-discharging-prefix-font = 2
+
+[module/spotify]
+type = custom/script
+tail = true
+format-prefix = "   "
+format = <label>
+exec = ~/.config/polybar/scripts/spotify-scroll.sh
+
+[module/yt]
+type = custom/script
+tail = true
+format-prefix = "   "
+format = <label>
+format-foreground=${colors.background}
+exec = ~/.config/polybar/scripts/spotify-scroll.sh
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+compositing-foreground = source
+compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+
+; vim:ft=dosini
